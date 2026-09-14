@@ -1,0 +1,36 @@
+name: CI
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Unit and integration tests (offline)
+        run: python -m unittest discover -s tests -v
+      - name: Reproduce demo
+        run: python -m scholar_compass demo --output runs/ci-demo
+      - name: Small labeled ranking evaluation
+        run: python -m evals.run
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: JavaScript syntax
+        run: node --check scholar_compass/static/app.js
+      - name: Install package into clean environment
+        run: |
+          python -m venv /tmp/sc-install
+          /tmp/sc-install/bin/pip install .
+          cd /tmp
+          /tmp/sc-install/bin/scholar-compass demo --output /tmp/sc-installed-demo
+      - uses: actions/upload-artifact@v4
+        with:
+          name: demo-python-${{ matrix.python-version }}
+          path: runs/ci-demo/

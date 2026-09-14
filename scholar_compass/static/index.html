@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Scholar Compass literature research agent">
+  <title>Scholar Compass · 论文导航</title><link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="masthead"><div><p class="kicker">RESEARCH WORKSPACE · 0.1.0</p><h1>Scholar Compass</h1><p class="subtitle">从研究问题到可核验的阅读清单</p></div><div class="badge" id="modeBadge">离线演示</div></header>
+<main class="layout">
+  <aside class="panel intake">
+    <div class="step"><span>01</span><div><b>描述你的研究</b><small>题目、背景与关键词</small></div></div>
+    <label for="title">论文题目 <em>*</em></label><input id="title" maxlength="500">
+    <label for="background">研究背景 <em>*</em></label><textarea id="background" rows="6" maxlength="8000"></textarea>
+    <label for="keywords">检索关键词 <small>英文更利于国际索引</small></label><input id="keywords" maxlength="1000">
+    <div class="row"><div><label for="yearFrom">起始年份</label><input id="yearFrom" type="number" min="1900" max="2100"></div><div><label for="yearTo">结束年份</label><input id="yearTo" type="number" min="1900" max="2100"></div></div>
+    <fieldset><legend>工作模式</legend><label class="radio"><input type="radio" name="mode" value="demo" checked> 离线演示 <small>固定示例，零密钥</small></label><label class="radio"><input type="radio" name="mode" value="live"> 真实检索 <small>按配置调用服务</small></label></fieldset>
+    <fieldset><legend>计划生成</legend><label class="radio"><input type="radio" name="planner" value="rules" checked> 透明规则 <small>可复现基线</small></label><label class="radio"><input type="radio" name="planner" value="openai"> 结构化大模型 <small>需 OPENAI 配置</small></label></fieldset>
+    <div class="weights"><div><label for="wRel">相关性 <output id="wRelOut">60</output>%</label><input id="wRel" type="range" min="1" max="100" value="60"></div><div><label for="wCite">引用数 <output id="wCiteOut">25</output>%</label><input id="wCite" type="range" min="0" max="100" value="25"></div><div><label for="wJif">影响因子 <output id="wJifOut">15</output>%</label><input id="wJif" type="range" min="0" max="100" value="15"></div></div>
+    <button class="primary" id="planBtn">生成阅读计划 <span>→</span></button><button class="secondary" id="runBtn">运行研究流程 <span>↗</span></button>
+    <p class="privacy">请求仅发送到当前本地服务。演示模式不会访问外部服务。</p>
+  </aside>
+  <section class="workspace">
+    <div class="workspace-head"><div><p class="kicker">READING BRIEF</p><h2 id="headline">先生成一份阅读计划</h2></div><div class="actions"><button id="exportMd" disabled>↓ Markdown</button><button id="exportJson" disabled>↓ JSON</button></div></div>
+    <div id="alert" class="alert hidden" role="status"></div><div id="progress" class="progress" aria-live="polite"><span class="dot"></span><span id="progressText">等待输入</span></div>
+    <div id="planView" class="plan-view empty"><div class="empty-mark">01</div><h3>把研究问题变成可执行的阅读任务</h3><p>系统会先拆解概念、信息需求和检索式。你可以检查并修改计划，再开始检索。</p></div>
+    <div id="resultsView" class="hidden"></div>
+  </section>
+</main><footer><span>Scholar Compass</span><span>Evidence-aware literature workflow · MIT License</span></footer>
+<script src="/app.js" defer></script>
+</body></html>

@@ -1,0 +1,10 @@
+.git
+.env
+.env.*
+.venv
+**/__pycache__
+runs
+private-data
+docs
+tests
+evals

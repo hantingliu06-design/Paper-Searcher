@@ -1,0 +1,15 @@
+{
+  "title": "面向知识密集型问答的检索增强生成可靠性研究",
+  "background": "研究如何通过检索增强生成（RAG）改善大语言模型在知识密集型问答中的事实准确性，重点比较稠密检索、检索与生成联合训练、自适应检索以及引用证据评估。希望找到基础方法、强基线、数据集和可复现实验。",
+  "keywords": "retrieval augmented generation, knowledge intensive question answering, dense retrieval, factuality",
+  "mode": "demo",
+  "planner": "rules",
+  "max_results": 8,
+  "year_from": 2015,
+  "year_to": 2026,
+  "weights": {
+    "relevance": 60,
+    "citations": 25,
+    "impact_factor": 15
+  }
+}
