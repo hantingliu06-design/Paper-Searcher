@@ -33,7 +33,7 @@ python3 -m unittest discover -s tests -v
 python3 -m evals.run
 ```
 
-The demo creates `report.json`, `report.md`, and `references.bib`. The [checked-in sample](examples/demo/report.md) lets a reviewer inspect the output without running anything.
+The demo creates `report.json`, `report.md`, and `references.bib`. The [checked-in sample](examples/demo/report.md) provides a complete report you can read without running the application.
 
 **Demo data is explicitly synthetic where it should be:** nine real paper identities, hand-written educational descriptions, illustrative citation counts, no fabricated impact factors, and no claim that a live Scholar check occurred. Demo mode always stays offline, even if credentials exist.
 
@@ -137,9 +137,9 @@ docker run --rm -p 127.0.0.1:8000:8000 --env-file .env scholar-compass
 
 The Docker image runs as a non-root user. Docker requires downloading the Python base image; the plain Python demo does not. Bind this demo to localhost. GitHub Pages cannot run its Python backend; GitHub hosts the source, screenshot and sample report.
 
-## For reviewers
+## Explore and validate
 
-Start with the [90-second walkthrough](docs/demo-guide.md), inspect [architecture decisions](docs/architecture.md), then run the offline tests and [evaluation](evals/README.md). The most useful review cases are missing JIF, high-citation off-topic papers, ambiguous titles, conflicting metadata and provider failures.
+Start with the [90-second walkthrough](docs/demo-guide.md), read the [architecture decisions](docs/architecture.md), then run the offline tests and [evaluation](evals/README.md). These cover missing JIF, high-citation off-topic papers, ambiguous titles, conflicting metadata and provider failures.
 
 Current validation and remaining gaps are recorded in [docs/validation.md](docs/validation.md). Planned extensions include embedding-based relevance with a labeled benchmark, field/year-normalized citation metrics, saved user reviews, broader domain fixtures and full-text evidence extraction.
 

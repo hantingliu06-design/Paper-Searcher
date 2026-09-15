@@ -19,7 +19,7 @@ flowchart LR
 
 The search loop runs at most two rounds and four queries, with a bounded provider fan-out. It stops when enough candidates have relevance ≥40, otherwise returns the partial recall it has. Candidates are filtered by requested years and retraction flags, then deduplicated by DOI or cautious title/year/author fallback. The displayed list is capped by `max_results`, limiting Scholar requests and cost.
 
-The local server is intentionally small: same-origin requests, a 128 KB JSON body cap, two concurrent jobs, no cookies, no database and no credentials in logs or responses. It is a portfolio demo, not a public multi-tenant service. A hosted version needs authentication, durable job isolation, provider quotas, a secret manager and a retention policy.
+The local server is intentionally small: same-origin requests, a 128 KB JSON body cap, two concurrent jobs, no cookies, no database and no credentials in logs or responses. It is designed for running the literature research workflow locally. A hosted version needs authentication, durable job isolation, provider quotas, a secret manager and a retention policy.
 
 The optional OpenAI planner uses the Responses API Structured Outputs schema. The model sees the user's topic as data and returns a plan, never paper records. The server validates the response again before retrieval. The transparent rules planner remains the reproducible baseline and works offline.
 

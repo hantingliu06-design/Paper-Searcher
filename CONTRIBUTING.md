@@ -8,4 +8,4 @@ For a scoring change, explain the ranking impact and rerun the labeled evaluatio
 
 The UI uses no build system. Keep it keyboard-accessible, readable at small widths, and explicit about offline versus live results. Check changes in a browser as well as running `node --check scholar_compass/static/app.js`.
 
-The web server is a local portfolio demo. Proposals for public hosting must include authentication, per-user job isolation, durable storage policy and service quotas.
+The web server is intended for local use. Proposals for public hosting must include authentication, per-user job isolation, durable storage policy and service quotas.
